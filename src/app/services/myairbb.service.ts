@@ -40,6 +40,10 @@ export class MyairbbService {
   getAllApartament(): Observable<ApartamentMyBB[]> {
     return this.http.get<ApartamentMyBB[]>(this.apiUrlAdmin + 'getAllApartment');
   }
+
+  getAllApartamentPending(): Observable<ApartamentMyBB[]> {
+    return this.http.get<ApartamentMyBB[]>(this.apiUrlAdmin + 'getAllApartmentNotApproved');
+  }
   getAllCar(): Observable<CarMyBb[]> {
     return this.http.get<CarMyBb[]>(this.apiUrlAdmin + 'getAllCar');
   }

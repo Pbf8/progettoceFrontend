@@ -12,6 +12,8 @@ export class AdminhomeComponent implements OnInit {
   newUser: UserMyBB;
   users: UserMyBB[];
   apartment: ApartamentMyBB[];
+  clickedPending: boolean;
+  clickedAll: boolean;
 
   booking: BookingMyBB;
 
@@ -24,9 +26,35 @@ export class AdminhomeComponent implements OnInit {
     this.myairbbService.getAllApartament().subscribe(data2 => {
       console.log(data2);
       this.apartment = data2;
+      
+    });
+    this.clickedAll=true;
+
+  }
+
+  showPendingApartment(){
+    this.apartment = [];
+    this.myairbbService.getAllApartamentPending().subscribe(data2 => {
+      console.log(data2);
+      this.apartment = data2;
+      this.clickedAll= false;
+      this.clickedPending =true;
     });
 
   }
 
+  showAllApartment(){
+    this.apartment = [];
+    this.myairbbService.getAllApartament().subscribe(data2 => {
+      console.log(data2);
+      this.apartment = data2;
+      this.clickedPending= false;
+      this.clickedAll = true;
+
+      
+
+    });
+
+  }
   
 }

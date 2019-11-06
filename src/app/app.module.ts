@@ -20,6 +20,7 @@ import { LoginadminsellerComponent } from './components/loginadminseller/loginad
 import { AdminhomeComponent } from './components/adminhome/adminhome.component';
 import { AdminexperiencesComponent } from './components/adminexperiences/adminexperiences.component';
 import { AdmincarsComponent } from './components/admincars/admincars.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AdmincarsComponent } from './components/admincars/admincars.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NoopAnimationsModule
   ],
   providers: [DataService,
   CommentiService,
