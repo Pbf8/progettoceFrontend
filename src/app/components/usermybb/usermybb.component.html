@@ -1,0 +1,100 @@
+<h3>Users Page</h3>
+
+<div class="card card-body">
+
+  <form #userForm="ngForm">
+
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text"
+             #newName="ngModel"
+             name="name"
+             [(ngModel)]="newUser.name"
+             class="form-control"
+             id="name"
+             placeholder="Enter Name">
+    </div>
+
+    <div class="form-group">
+      <label>Surname</label>
+      <input type="text"
+             #newSurname="ngModel"
+             name="surname"
+             [(ngModel)]="newUser.surname"
+             class="form-control"
+             id="surname"
+             placeholder="Enter Surname">
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email"
+             #newEmail="ngModel"
+             name="email"
+             [(ngModel)]="newUser.email"
+             class="form-control"
+             id="email"
+             placeholder="Enter Email">
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number"
+             #newAge="ngModel"
+             name="age"
+             [(ngModel)]="newUser.age"
+             class="form-control"
+             id="age"
+             placeholder="Enter Age">
+    </div>
+
+    <div class="form-group">
+      <label>Birthday</label>
+      <input type="date"
+             #newUserName="ngModel"
+             name="dataNascita"
+             [(ngModel)]="newUser.dataNascita"
+             class="form-control"
+             id="dataNascita"
+             placeholder="Enter Birthday">
+    </div>
+
+    <button (click)="addNewUser()" type="button" class="btn btn-primary">Add New User</button>
+  </form>
+</div>
+
+
+<div *ngIf="users.length > 0">
+  <div *ngFor="let item of users; let myIndex = index" class="card card-body" routerLink="/users/{{item.id}}">
+    <h4>{{myIndex + 1}}. {{item.name}} {{item.surname}}</h4>
+    <ul>
+      <li>Email: {{item.email}}</li>
+      <li *ngIf="item.age">Age: {{item.age}}</li>
+      <li *ngIf="item.dataNascita">Birthday: {{item.dataNascita | date:"dd/MM/yyyy"}}</li>
+    </ul>
+  </div>
+
+</div>
+
+<div *ngIf="users.length == 0">
+  <h4>No User Found!</h4>
+</div>
+
+<div *ngIf="apartment.length > 0">
+  <div *ngFor="let item of apartment; let myIndex = index" class="card card-body" routerLink="/admin/{item.id}}">
+    <h4>{{myIndex + 1}}. {{item.description}} {{item.price}} €</h4>
+    <ul>
+      <li>State: {{item.state}}</li>
+      
+    </ul>
+  </div>
+
+</div>
+
+<div *ngIf="apartment.length == 0">
+  <h4>No Apartment Found!</h4>
+</div>
+
+
+
+

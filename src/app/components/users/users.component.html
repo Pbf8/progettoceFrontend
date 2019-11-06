@@ -1,0 +1,63 @@
+<h3>Users Page</h3>
+
+<div class="card card-body">
+
+<form (ngSubmit)="onSubmit2()" #userForm="ngForm">
+
+  <div class="form-group">
+    <label for="inpuFirstName">First Name</label>
+    <input (copy)="onFireEvent($event)" type="email"
+           #newUserFirstName="ngModel"
+           name="firstname"
+           [(ngModel)]="newUser.firstname"
+           class="form-control"
+           [ngClass]="{'is-invalid': newUserFirstName.errors && newUserFirstName.touched}"
+           id="inpuFirstName"
+           placeholder="Enter First Name">
+    <div class="invalid-feedback">Insert a valid First Name</div>
+    <!--{{newUser.firstname}}-->
+  </div>
+
+  <div class="form-group">
+    <label for="inputLastName">Last Name</label>
+    <input type="text"
+           #newUserLastName="ngModel"
+           name="lastname"
+           [(ngModel)]="newUser.lastname"
+           required
+           class="form-control"
+           id="inputLastName"
+           placeholder="Enter Last Name">
+  </div>
+
+  <div class="form-group">
+    <label for="inputAge">Age</label>
+    <input type="number"
+           #newUserAge="ngModel"
+           name="age"
+           [(ngModel)]="newUser.age"
+           class="form-control"
+           id="inputAge"
+           placeholder="Enter Age">
+  </div>
+
+  <button [disabled]="!userForm.form.valid"
+          [ngClass]="mycustomclass"
+          type="submit" class="btn btn-primary">Add New User</button>
+</form>
+</div>
+
+<div *ngIf="users.length > 0">
+<div *ngFor="let item of users; let myIndex = index" class="card card-body">
+  <h4>{{myIndex + 1}}. {{item.firstname}} {{item.lastname}} <button (click)="showHideDetails(item)"><i [ngClass]="!item.showdetails ? 'fa fa-plus' : 'fa fa-minus'"></i></button></h4>
+  <ul *ngIf="item.showdetails">
+    <li *ngIf="item.age > 20">Age: {{item.age}}</li>
+    <li *ngIf="showEnabled && item.address!=null && item.address.city!=''">Address: {{item.address.street}}, {{item.address.city}}</li>
+  </ul>
+</div>
+
+</div>
+
+<div *ngIf="users.length == 0">
+  <h4>No User Found!</h4>
+</div>

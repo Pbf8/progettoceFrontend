@@ -1,0 +1,31 @@
+<h3>Admin Home</h3>
+
+<div class="card card-body">
+
+  <button type="button" class="btn btn-outline-danger">Show pending requests</button>
+
+  
+  
+
+<div *ngIf="apartment.length > 0">
+  <div *ngFor="let item of apartment; let myIndex = index" class="card card-body" routerLink="/admin/{item.id}}">
+    <h4>{{myIndex + 1}}. {{item.description}} {{item.price}} €</h4>
+    <ul>
+      <li>State: {{item.state}}</li>
+      <li><img mat-card-sm-image src= "{{item.picture}}" ></li>
+    </ul>
+    
+      
+      
+    
+  </div>
+
+</div>
+
+<div *ngIf="apartment.length == 0">
+  <h4>No Apartment Found!</h4>
+</div>
+
+
+
+

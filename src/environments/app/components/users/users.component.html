@@ -1,0 +1,16 @@
+<h3>Users Page</h3>
+
+<div *ngIf="users.length > 0">
+<div *ngFor="let item of users; let myIndex = index" class="card card-body">
+  <h4>{{myIndex + 1}}. {{item.firstname}} {{item.lastname}}</h4>
+  <ul>
+    <li *ngIf="item.age > 20">Age: {{item.age}}</li>
+    <li *ngIf="showEnabled">Address: {{item.address.street}}, {{item.address.city}}</li>
+  </ul>
+</div>
+  <button [disabled]="!showEnabled" [ngClass]="mycustomclass" type="button" class="btn btn-primary">Add New User</button>
+</div>
+
+<div *ngIf="users.length == 0">
+  <h4>No User Found!</h4>
+</div>

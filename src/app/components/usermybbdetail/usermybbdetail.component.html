@@ -1,0 +1,8 @@
+<div class="card card-body">
+  <h4>{{item.name}} {{item.surname}}</h4>
+  <ul>
+    <li>Email: {{item.email}}</li>
+    <li *ngIf="item.age">Age: {{item.age}}</li>
+    <li *ngIf="item.dataNascita">Birthday: {{item.dataNascita | date:"dd/MM/yyyy"}}</li>
+  </ul>
+</div>

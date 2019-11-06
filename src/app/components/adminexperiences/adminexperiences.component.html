@@ -1,0 +1,22 @@
+<h3>Admin Home</h3>
+
+<div class="card card-body">
+
+ 
+
+
+
+<div *ngIf="experience.length > 0">
+  <div *ngFor="let item of experience; let myIndex = index" class="card card-body" routerLink="/admin/{item.id}}">
+    <h4>{{myIndex + 1}}. {{item.description}} {{item.price}} €</h4>
+    <ul>
+      <li>State: {{item.state}}</li>
+      
+    </ul>
+  </div>
+
+</div>
+
+<div *ngIf="experience.length == 0">
+  <h4>No Experience Found!</h4>
+</div>
